@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget{
   const MealsScreen({super.key, required this.title, required this. meals});
@@ -23,6 +24,13 @@ class MealsScreen extends StatelessWidget{
       );
     }
 
+    if(meals.isNotEmpty) {
+      content = ListView.builder(
+        itemCount: meals.length,
+        itemBuilder: (ctx, index) => MealItem(meal: meals[index])
+      );
+    }
+
 
     return Scaffold(
       appBar: AppBar(
@@ -31,8 +39,8 @@ class MealsScreen extends StatelessWidget{
       body: GridView(
         padding: const EdgeInsets.all(16),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, 
-          childAspectRatio: 3/2
+          crossAxisCount: 1, 
+          childAspectRatio: 0.5
         ),
         children: [content,]
       ),

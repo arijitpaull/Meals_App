@@ -12,7 +12,7 @@ class Categories extends StatelessWidget {
 
     Navigator.push(context,
       MaterialPageRoute(builder: (ctx) => 
-        MealsScreen(title: category.title, meals: [],)
+        MealsScreen(title: category.title, meals: filteredMeals,)
       )
     );
   }
